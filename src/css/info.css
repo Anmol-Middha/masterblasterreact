@@ -1,0 +1,31 @@
+.sachin-image{
+    margin: auto; 
+    max-width: 600px; 
+    min-width: 100px;
+    padding-top: 20px;
+    padding-bottom:20px ;
+    height: 100%;
+}
+
+.card-body{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.info-tabs.nav-tabs.nav-item.show.nav-link, .info-tabs.nav-tabs .nav-link.active{
+    color: white;
+    background: #6c757c
+
+}
+.info-tabs a{
+    color: #6c757c
+}
+
+#nav-items-bat {
+    padding-right:0px;
+}
+#nav-items-bowl{
+    padding-left:0px ;
+    padding-right: 0px;
+    width:100%
+}
