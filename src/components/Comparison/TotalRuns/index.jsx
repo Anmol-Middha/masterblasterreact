@@ -71,7 +71,7 @@ export default class index extends Component {
 
         return ( 
             <Card style={{marginBottom: '50px'}}>
-            <Card.Header><center><h5>Sachin vs Every Team</h5></center></Card.Header>
+            <Card.Header><center><h5>Total Runs</h5></center></Card.Header>
             <Row>
             
             {/* Creating Svg for Chart */}
