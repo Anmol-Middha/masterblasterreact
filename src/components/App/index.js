@@ -14,7 +14,7 @@ export default class index extends Component {
                 <Navigation/>
                 <br />
                 <Route exact path={ROUTES.LANDING} component={LandingPage} />
-                <Route exact path={ROUTES.COMPARISON} component = {ComparisonPage} />
+                <Route exact path={ROUTES.COMPARISON} component={ComparisonPage} />
             </Router>
         )
     }

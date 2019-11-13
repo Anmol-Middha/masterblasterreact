@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {Container, Row, Jumbotron} from 'react-bootstrap';
 
-import Info from './Info/index.jsx';
-import YearPerformance from './YearPerformance/index.jsx';
+import Info from './Info';
+import YearPerformance from './YearPerformance';
 import Country from './Country'
 import Team from './Team';
 import Ground from './Ground';

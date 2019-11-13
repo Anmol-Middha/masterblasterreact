@@ -17,7 +17,6 @@ export default class index extends Component {
     }
     componentDidMount(){
         this.fetchdata();
-        
     }
     // fetching data from server
     fetchdata(){
@@ -34,6 +33,7 @@ export default class index extends Component {
             });
         })
     }
+    // rendering component
     render() {
         //setting width and height according to veiwport
         let width = window.innerWidth;

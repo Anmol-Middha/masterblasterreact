@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
+import {Container, Row, Jumbotron} from 'react-bootstrap';
+
+import Search from './SearchBar';
 
 export default class index extends Component {
     render() {
         return (
-            <div>
-                <center>
-                <h2>Still under development</h2>
-                <p>Sorry for the delay. Due to university examinations I was not able to give much time on task.</p>
-                </center>
-            </div>
+            // Rendering all components in container
+            <Container style={{maxWidth: "1380px"}}>
+                <Search style={{marginTop: '20px', marginBottom: '20px'}}/>
+            </Container>
         )
     }
 }

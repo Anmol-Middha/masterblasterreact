@@ -1,2 +1,2 @@
 export const LANDING = '/';
-export const COMPARISON = '/comparison';
+export const COMPARISON = '/comparison/';
