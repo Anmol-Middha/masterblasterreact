@@ -28,8 +28,14 @@ export default class Bars extends Component {
                 height={height - margins.bottom - scales.yScale(datum[k])}
                 width={xScale.bandwidth()}
                 fill={this.colorScale(datum[k])}
-                onMouseOver={() => this.props.onMouseOverCallback(datum)}
-                onMouseOut={() => this.props.onMouseOutCallback(null)}
+                onMouseOver={(e) => {
+                  this.props.onMouseOverCallback({"name":k, "value":datum[k]})
+                  e.target.style.opacity = 0.8;
+                }}
+                onMouseOut={(e) => {
+                  this.props.onMouseOutCallback(null)
+                  e.target.style.opacity = 1;
+                }}
             />
           }
       },)

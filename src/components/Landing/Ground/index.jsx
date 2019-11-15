@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Form } from 'react-bootstrap';
 import axios from 'axios';
 import * as d3 from 'd3';
 
+import Tooltip from './Tooltip';
 import Pie from './Pie.jsx';
 
 export default class index extends Component {
@@ -11,8 +12,11 @@ export default class index extends Component {
         this.state={
             groundData: [],
             pieData: [],
-            error: {err: {}, message:""}
+            error: {err: {}, message:""},
+            sachinruns: "300",
+            hoveredSlice: {},
         }
+        this.handleRunsChangeEvent = this.handleRunsChangeEvent.bind(this);
         this.fetchdata = this.fetchdata.bind(this);
     }
     componentDidMount(){
@@ -33,32 +37,51 @@ export default class index extends Component {
             });
         })
     }
+
+    // updating the runs input into state
+    handleRunsChangeEvent(e){
+        this.setState({
+            sachinruns: e.target.value
+        });
+    }
+
     // rendering component
     render() {
         //setting width and height according to veiwport
-        let width = window.innerWidth;
-        let height = window.innerHeight;
+        let width = 1350;
+        let height = 600;
         let minViewportSize = Math.min(width, height);
         // This sets the radius of the pie chart to fit within
         // the current window size, with some additional padding
-        let radius = (minViewportSize * .7) / 2;
+        let radius = (minViewportSize * .9) / 2;
         // Centers the pie chart
         let x = width / 2;
         let y = height / 2;
         return (
             <Card>
-                <Card.Header><center><h5>Grounds where Sachin scored more than 500 runs in his career</h5></center></Card.Header>
+                <Card.Header><center><h5>Grounds where Sachin scored more than &nbsp;
+                    <span>
+                        <input type="text" value={this.state.sachinruns} onChange={this.handleRunsChangeEvent}></input>
+                    </span> &nbsp; runs in his career</h5></center></Card.Header>
                 <Card.Body>
                 <svg style={{marginLeft: "auto", marginRight: "auto",  minWidth: '300px', minHeight: '600px', width: '100%', height:'100%'}}>
                     {/* Pie component */}
                     <Pie x={x} y={y} 
                     radius={radius} 
-                    data={ this.state.groundData.map(d =>{ return (d.runs>500)? d.runs : null}) } 
+                    data={ this.state.groundData.map(d =>{ return (d.runs > parseInt(this.state.sachinruns))? d : null}) } 
                     innerRadius={radius * .35}
                     outerRadius={radius}
                     cornerRadius={7}
-                    padAngle={.02}/>
+                    padAngle={.02}
+                    onMouseOverCallback2={datum => this.setState({hoveredSlice: {"ground":datum["ground"], "x": x, "y": y}})}/>
                 </svg>   
+                {
+                    this.state.hoveredSlice ?
+                    <Tooltip
+                        hoveredSlice={this.state.hoveredSlice}
+                    /> :
+                    null
+                }
                 </Card.Body>    
             </Card>
         )

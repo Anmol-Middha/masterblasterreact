@@ -30,10 +30,11 @@ export default class index extends Component {
             this.setState({
                 playersdata: rslt.data
             })
-            console.log(rslt);
         })
         .catch(err=>{
-            console.log(err);
+            this.setState({
+                err: {err, message:"data loading error"}
+            })
         })
     }
 

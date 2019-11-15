@@ -26,9 +26,6 @@ export default class index extends Component {
     componentDidMount(){
         this.fetchplayernames();
     }
-    componentDidUpdate(){
-        console.log(this.state.allplayernames);
-    }
     playerChangeEvent(event){
         this.setState({
             player: event.target.value

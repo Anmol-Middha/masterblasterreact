@@ -67,7 +67,6 @@ export default class index extends Component {
 			.range(d3.schemeDark2
 				.map(function(c) { 
 					c = d3.rgb(c); 
-					
 					return c; 
 				})
 			),
@@ -78,7 +77,7 @@ export default class index extends Component {
 			.round(false),
 		
 		nodes = d3.hierarchy(chartdata)	//getting nodes of heirarichal data
-		.sum(function(d) { return d.value ? d.value : 0; }),
+		.sum(function(d) { return d.value ? d.value : 0;}),
 
 	currentDepth;
 	treemap(nodes);	//binding data to treemap
@@ -102,7 +101,14 @@ export default class index extends Component {
 		.on("click", zoom)
 		.append("p")
 		.attr("class", "label")
-		.text(function(d) { return d.data.name ? d.data.name : "---"; });
+		.text(function(d) {
+			if(d.data.name && d.data.value){
+				return "India " + d.data.name + " " + d.data.value + " matches"
+			}
+			else{
+				return d.data.name;
+			} 
+		});
 
 	// setting zoom function to zoom button
 	let parent = d3.select(".up")
@@ -142,7 +148,7 @@ export default class index extends Component {
 		<Card.Body>
 			<Row>
 			<nav>
-				<div class="up">&larr; UP</div>
+				<div class="up">&larr; Back</div>
 			</nav>
 			<div class="feature" id="chart" style={{maxHeight: '541px'}}></div>
 			</Row>

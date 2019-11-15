@@ -2,16 +2,17 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Axes from './Axes.jsx';
 import Bars from './Bars.jsx';
+import Tooltip from './Tooltip.jsx';
 import { scaleBand, scaleLinear } from 'd3-scale';
-import {Image, Col, Row, Card, Nav, Tab, OverlayTrigger, Tooltip} from 'react-bootstrap';
+import {Row, Card} from 'react-bootstrap';
 
 export default class index extends Component {   
     constructor(){
         super();
         this.state = {
             countrydata: [],
+            hoveredBar: null,
             err:{err:{}, message: ""},
-            hoveredBar: null
         }
         this.fetchdata = this.fetchdata.bind(this);
         this.xScale = scaleBand()
@@ -91,14 +92,8 @@ export default class index extends Component {
                     data={this.state.countrydata}
                     maxValue={maxValue}
                     svgDimensions={svgDimensions}
-                    onMouseOverCallback={datum =>{ 
-                        for(let key in datum){
-                            this.setState({
-                                hoveredBar: datum[key]
-                            })
-                        } 
-                    }}
-                    onMouseOutCallback={() => this.setState({hoveredBar: null})}
+                    onMouseOverCallback={datum => this.setState({hoveredBar: datum})}
+                    onMouseOutCallback={datum => this.setState({hoveredBar: null})}
                 />
                 {/* Labels on axis of bar chart */}
                 <g>    
@@ -106,6 +101,14 @@ export default class index extends Component {
                     <text x="0" y="0" fill="#7B1FA2" textAnchor="start" transform="rotate(-90,100,100) translate(-100, 12)">Total runs by sachin</text>
                 </g>
             </svg>
+            {/* Tooltip on bars of chart */}
+            { this.state.hoveredBar ?
+            <Tooltip
+                hoveredBar={this.state.hoveredBar}
+                scales={{ xScale, yScale }}
+            /> :
+            null
+            }
             </Row>
         </Card>
         )
