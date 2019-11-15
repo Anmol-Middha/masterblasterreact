@@ -73,7 +73,8 @@ export default class index extends Component {
                     outerRadius={radius}
                     cornerRadius={7}
                     padAngle={.02}
-                    onMouseOverCallback2={datum => this.setState({hoveredSlice: {"ground":datum["ground"], "x": x, "y": y}})}/>
+                    onMouseOverCallback2={datum => this.setState({hoveredSlice: {"ground":datum["ground"], "x": x, "y": y}})}
+                    onMouseOutCallback2={datum =>{this.setState({hoveredSlice: null})}}/>
                 </svg>   
                 {
                     this.state.hoveredSlice ?

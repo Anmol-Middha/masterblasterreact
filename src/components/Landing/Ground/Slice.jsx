@@ -19,7 +19,10 @@ export default class Slice extends React.Component {
           this.props.onMouseOverCallback({"ground": this.props.ground});
           e.target.style.opacity = 0.5}
         }
-        onMouseOut={(e)=>{e.target.style.opacity = 1;}}></path>
+        onMouseOut={(e)=>{
+          this.props.onMouseOutCallback({});
+          e.target.style.opacity = 1;
+        }}></path>
         {/* label for each arc */}
         <text transform={`translate(${arc.centroid(value)})`}
               dy=".35em"

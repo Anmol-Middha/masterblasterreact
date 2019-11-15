@@ -41,7 +41,8 @@ export default class Pie extends React.Component {
                      value={d}
                      ground={grounds[i]}
                      fill={this.colorScale(i)} 
-                     onMouseOverCallback={datum=>{this.props.onMouseOverCallback2(datum)}}       
+                     onMouseOverCallback={datum=>{this.props.onMouseOverCallback2(datum)}}      
+                     onMouseOutCallback={datum=>{this.props.onMouseOutCallback2(datum)}}
               />
           )})}
         </g>
