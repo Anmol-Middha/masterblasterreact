@@ -8,11 +8,12 @@ export default class index extends Component {
     constructor(){
         super();
         this.state = {
-            infodata: {},
+            infodata: {},   //state to store the data from server
             err: {error: {}, message: ""}
         };
-        this.fetchData = this.fetchData.bind(this);
+        this.fetchData = this.fetchData.bind(this); 
     }
+    //Everytime when page renders
     componentDidMount(){
         this.fetchData();
     }

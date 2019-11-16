@@ -47,7 +47,12 @@ export default class index extends Component {
     addToCompare(e){
         e.preventDefault();
         let a = this.state.comparebox;
-        a.push(this.state.player);
+        if(!this.state.comparebox.includes(this.state.player)){
+            a.push(this.state.player);
+        }
+        else{
+            alert(`${this.state.player} already selected`);
+        }
     
         this.setState({
             comparebox: a,
@@ -76,6 +81,7 @@ export default class index extends Component {
             <Form.Group as={Row}>
                 <Col md={8} xs={12}>
                     <Form.Control as="select" placeholder="Enter name of player" value={this.state.player} onChange={this.playerChangeEvent}>
+                    <option default>Select Player</option>
                     {this.state.allplayernames.map(d=>{
                         return <option>{d["name"]}</option>
                     })}
@@ -85,7 +91,7 @@ export default class index extends Component {
                     <Button type="button" variant="success" block onClick={this.addToCompare}>Add to Compare</Button>
                 </Col>
                 <Col md={2} xs={12}>
-                        <Button type="button" variant="danger" block onClick={this.removeAllComparison}>Delete All</Button>
+                    <Button type="button" variant="danger" block onClick={this.removeAllComparison}>Delete All</Button>
                 </Col>
             </Form.Group>
             <hr></hr>
