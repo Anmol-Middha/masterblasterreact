@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Axes from './Axes.jsx';
 import Bars from './Bars.jsx';
+import Tooltip from './Tooltip.jsx';
 
 export default class index extends Component {
     constructor(props){
@@ -66,7 +67,7 @@ export default class index extends Component {
         // scaleLinear type
         const yScale = this.yScale
         // scaleLinear domain required at least two values, min and max       
-        .domain([0, (100)])
+        .domain([0, (130)])
         .range([svgDimensions.height - margins.bottom, margins.top])
 
         return ( 
@@ -93,14 +94,8 @@ export default class index extends Component {
                     data={this.state.playersdata}
                     maxValue={maxValue}
                     svgDimensions={svgDimensions}
-                    // onMouseOverCallback={datum =>{ 
-                    //     for(let key in datum){
-                    //         this.setState({
-                    //             hoveredBar: datum[key]
-                    //         })
-                    //     } 
-                    // }}
-                    // onMouseOutCallback={() => this.setState({hoveredBar: null})}
+                    onMouseOverCallback={datum => this.setState({hoveredBar: datum})}
+                    onMouseOutCallback={datum => this.setState({hoveredBar: null})}
                 />
                 {/* Labels on axis of bar chart */}
                 <g>    
@@ -108,6 +103,14 @@ export default class index extends Component {
                     <text x="0" y="0" fill="black" textAnchor="start" transform="rotate(-90,100,100) translate(-140, 50)" fontSize="20">Bat avg. and Strike rate</text>
                 </g>
             </svg>
+            {/* Tooltip on bars of chart */}
+            { this.state.hoveredBar ?
+            <Tooltip
+                hoveredBar={this.state.hoveredBar}
+                scales={{ xScale, yScale }}
+            /> :
+            null
+            }
             </Row>
         </Card>
         )

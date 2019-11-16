@@ -33,8 +33,14 @@ export default class Bars extends Component {
                 height={height - margins.bottom - scales.yScale(datum["strike_rate"])}
                 width={xScale.bandwidth()}
                 fill={this.colorScalea(datum["strike_rate"])}
-                // onMouseOver={() => this.props.onMouseOverCallback(datum)}
-                // onMouseOut={() => this.props.onMouseOutCallback(null)}
+                onMouseOver={(e) => {
+                  this.props.onMouseOverCallback({"name":datum["name"], "value":datum["strike_rate"], "label":"Strike rate"})
+                  e.target.style.opacity = 0.8;
+                }}
+                onMouseOut={(e) => {
+                  this.props.onMouseOutCallback(null)
+                  e.target.style.opacity = 1;
+                }}
             />
       },)
     )
@@ -47,6 +53,14 @@ export default class Bars extends Component {
                 height={height - margins.bottom - scales.yScale(datum["bat_avg"])}
                 width={xScale.bandwidth()}
                 fill={this.colorScaleb(datum["bat_avg"])}
+                onMouseOver={(e) => {
+                  this.props.onMouseOverCallback({"name":datum["name"], "value":datum["bat_avg"], "label":"Bat avg"})
+                  e.target.style.opacity = 0.8;
+                }}
+                onMouseOut={(e) => {
+                  this.props.onMouseOutCallback(null)
+                  e.target.style.opacity = 1;
+                }}
             />
         },)
     )
