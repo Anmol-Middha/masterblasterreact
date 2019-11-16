@@ -5,7 +5,7 @@ export default class index extends Component {
     render() {
         return (
             <div>
-                {/* Navigation bar  */}
+                {/* Navigation bar ` */}
                 <Navbar bg="dark" variant="dark">
                     <Navbar.Brand href="./">
                     <img

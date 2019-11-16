@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Form } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import axios from 'axios';
-import * as d3 from 'd3';
 
 import Tooltip from './Tooltip';
 import Pie from './Pie.jsx';
@@ -14,7 +13,7 @@ export default class index extends Component {
             pieData: [],
             error: {err: {}, message:""},
             sachinruns: "300",
-            hoveredSlice: {},
+            hoveredSlice: null,
         }
         this.handleRunsChangeEvent = this.handleRunsChangeEvent.bind(this);
         this.fetchdata = this.fetchdata.bind(this);
@@ -74,7 +73,7 @@ export default class index extends Component {
                     cornerRadius={7}
                     padAngle={.02}
                     onMouseOverCallback2={datum => this.setState({hoveredSlice: {"ground":datum["ground"], "x": x, "y": y}})}
-                    onMouseOutCallback2={datum =>{this.setState({hoveredSlice: null})}}/>
+                    onMouseOutCallback2={datum => {this.setState({hoveredSlice: null})}}/>
                 </svg>   
                 {
                     this.state.hoveredSlice ?

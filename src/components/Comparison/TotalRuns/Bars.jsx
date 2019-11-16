@@ -38,7 +38,7 @@ export default class Bars extends Component {
             />
       },)
     )
-    
+
     // rendering bars
     return (
       <g>{barsa}</g>

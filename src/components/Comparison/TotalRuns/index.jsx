@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { scaleBand, scaleLinear } from 'd3-scale';
-import {Row, Col, Card} from 'react-bootstrap';
+import {Row, Card} from 'react-bootstrap';
 import axios from 'axios';
 
 import Axes from './Axes.jsx';

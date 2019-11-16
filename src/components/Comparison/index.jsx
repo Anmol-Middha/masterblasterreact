@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Container, Row, Jumbotron} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 
 import Search from './SearchBar';
 

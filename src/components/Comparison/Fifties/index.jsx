@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import * as d3 from 'd3';
-import {Row, Col, Card} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import axios from 'axios';
 
 import Pie from './Pie.jsx';
