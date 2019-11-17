@@ -21,7 +21,7 @@ export default class index extends Component {
         this.fetchdata(["SR Tendulkar (INDIA)"]);
     }
 
-    componentWillUpdate(){
+    componentDidUpdate(){
         this.fetchdata(this.props.comparedata);
     }
 

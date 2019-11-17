@@ -18,12 +18,7 @@ export default class index extends Component {
     componentDidMount(){
         this.fetchdata(["SR Tendulkar (INDIA)"]);
     }
-    componentWillReceiveProps(){
-        this.setState({
-            playersdata: this.props.comparedata
-        })
-    }
-    componentWillUpdate(){
+    componentDidUpdate(){
         this.fetchdata(this.props.comparedata);
     }
     fetchdata(players){
