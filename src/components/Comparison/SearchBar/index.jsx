@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import * as d3 from 'd3';
 import { Card, Form, Button, Row, Col} from 'react-bootstrap'; 
 
 import Fifties from '../Fifties';
@@ -72,6 +73,7 @@ export default class index extends Component {
         })
     }
     render() {
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
     return (
     <div>
     <Card>
@@ -87,10 +89,10 @@ export default class index extends Component {
                     </Form.Control>
                 </Col>
                 <Col md={2} xs={12}>
-                    <Button type="button" variant="success" block onClick={this.addToCompare}>Add to Compare</Button>
+                    <Button type="button" variant="outline-success" block onClick={this.addToCompare}>Add to Compare</Button>
                 </Col>
                 <Col md={2} xs={12}>
-                    <Button type="button" variant="danger" block onClick={this.removeAllComparison}>Delete All</Button>
+                    <Button type="button" variant="outline-danger" block onClick={this.removeAllComparison}>Delete All</Button>
                 </Col>
             </Form.Group>
             <hr></hr>
@@ -98,10 +100,12 @@ export default class index extends Component {
                 <Row>
                 {this.state.comparebox.map((data, index)=>{
                     return (<Col xs={2}>
-                        <Button variant="outline-success" size="sm" disabled block>{data}
+                        <Button variant="outline-light" size="sm" disabled block style={{backgroundColor: colorScale(index), color: "white"}}>  
+                        {data}
                         <span>
                             <Button style={{position: "absolute", top:"0px", right: "15px"}} 
                                 variant="link" 
+                                style ={{color: "white"}}
                                 type="button" 
                                 size="sm" 
                                 value={index}

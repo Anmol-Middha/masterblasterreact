@@ -3,6 +3,7 @@ import {Card} from 'react-bootstrap';
 import axios from 'axios';
 
 import Pie from './Pie.jsx';
+import Tooltip from './Tooltip.jsx';
 
 export default class index extends Component {
     constructor(props){
@@ -10,6 +11,7 @@ export default class index extends Component {
         this.state = {
             playersdata: [],
             foursdata:[],
+            hoveredSlice: null,
             err: {err:{}, message:""}
         }
         this.fetchdata = this.fetchdata.bind(this);
@@ -31,10 +33,11 @@ export default class index extends Component {
             this.setState({
                 playersdata: rslt.data
             })
-            console.log(rslt);
         })
         .catch(err=>{
-            console.log(err);
+            this.setState({
+                err: {err: {}, message: "data loading error"}
+            })
         })
     }
     render() {
@@ -55,11 +58,20 @@ export default class index extends Component {
                     {/* Pie component */}
                     <Pie x={x} y={y} 
                     radius={radius} 
-                    data={ this.state.playersdata.map(d =>{ return d["hundreds"]}) } 
+                    data={ this.state.playersdata.map(d =>{ return d}) } 
                     outerRadius={radius}
                     cornerRadius={7}
-                    padAngle={.02}/>
-                </svg>  
+                    padAngle={.02}
+                    onMouseOverCallback2={datum => this.setState({hoveredSlice: {"name":datum["name"], "x": x, "y": y}})}
+                    onMouseOutCallback2={datum => {this.setState({hoveredSlice: null})}}/>
+                </svg> 
+                {
+                    this.state.hoveredSlice ?
+                    <Tooltip
+                        hoveredSlice={this.state.hoveredSlice}
+                    /> :
+                    null
+                } 
                 </Card.Body>
             </Card>
         )

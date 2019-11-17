@@ -13,7 +13,16 @@ export default class Slice extends Component {
         return (
           <g>
           {/* path for each arc */}
-          <path d={arc(value)} fill={fill}></path>
+          <path d={arc(value)} fill={fill}
+             onMouseOver={(e)=>{
+              this.props.onMouseOverCallback({"name": this.props.playername});
+              e.target.style.opacity = 0.5}
+            }
+            onMouseOut={(e)=>{
+              this.props.onMouseOutCallback({});
+              e.target.style.opacity = 1;
+            }}>
+          </path>
           {/* label for each arc */}
           <text transform={`translate(${arc.centroid(value)})`}
                 dy=".35em"
