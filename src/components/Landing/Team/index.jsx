@@ -19,7 +19,7 @@ export default class index extends Component {
 	}
 	// fetching data from server
     fetchdata(){
-        axios.post('https://masterblaster.herokuapp.com/sachin/team')
+        axios.get('https://masterblaster.herokuapp.com/sachin/team')
         .then(rslt=>{
             this.setState({
                 teamdata: rslt.data,

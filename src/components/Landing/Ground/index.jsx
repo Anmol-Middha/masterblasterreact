@@ -24,7 +24,7 @@ export default class index extends Component {
     // fetching data from server
     fetchdata(){
         var arr = [];
-        axios.post('https://masterblaster.herokuapp.com/sachin/ground')
+        axios.get('https://masterblaster.herokuapp.com/sachin/ground')
         .then(rslt=>{
             this.setState({
                 groundData: rslt.data.data

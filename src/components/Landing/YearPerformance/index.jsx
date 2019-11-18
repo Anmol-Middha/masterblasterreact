@@ -18,7 +18,7 @@ export default class index extends Component {
     }
     // fetching data from server
     fetchData(){
-        axios.post('https://masterblaster.herokuapp.com/sachin/year', {headers:{
+        axios.get('https://masterblaster.herokuapp.com/sachin/year', {headers:{
             'Content-Type': 'application/json'
         }})
         .then(rslt=>{

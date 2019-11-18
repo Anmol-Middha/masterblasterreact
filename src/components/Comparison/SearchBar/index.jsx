@@ -32,7 +32,7 @@ export default class index extends Component {
         })
     }
     fetchplayernames(){
-        axios.post("https://masterblaster.herokuapp.com/comparison").
+        axios.get("https://masterblaster.herokuapp.com/comparison").
         then(rslt=>{
             this.setState({
                 allplayernames: rslt.data
