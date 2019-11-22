@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as d3 from 'd3';
 import { Card, Form, Button, Row, Col} from 'react-bootstrap'; 
 
+// importing all the components of comparison module
 import Fifties from '../Fifties';
 import Centuries from '../Centuries';
 import Zeroes from '../Zeroes';
@@ -19,18 +20,21 @@ export default class index extends Component {
         }
         this.playerChangeEvent = this.playerChangeEvent.bind(this);
         this.fetchplayernames = this.fetchplayernames.bind(this);
-        this.addToCompare = this.addToCompare.bind(this);
-        this.removeComparison = this.removeComparison.bind(this);
-        this.removeAllComparison = this.removeAllComparison.bind(this);
+        this.addToCompare = this.addToCompare.bind(this);   
+        this.removeComparison = this.removeComparison.bind(this);   
+        this.removeAllComparison = this.removeAllComparison.bind(this); 
     }
+    // executes when page renders
     componentDidMount(){
         this.fetchplayernames();
     }
+    // handle the change event of player name
     playerChangeEvent(event){
         this.setState({
             player: event.target.value
         })
     }
+    // fetch all player names from server
     fetchplayernames(){
         axios.get("https://masterblaster.herokuapp.com/comparison").
         then(rslt=>{
@@ -44,6 +48,7 @@ export default class index extends Component {
             })
         })
     }
+    // add selected player to comparison array
     addToCompare(e){
         e.preventDefault();
         let a = this.state.comparebox;
@@ -59,6 +64,7 @@ export default class index extends Component {
             player: ""
         })
     }
+    // remove selected player from comparison array
     removeComparison(e){
         let a = this.state.comparebox;
         a.splice(e.target.value, 1);
@@ -67,6 +73,7 @@ export default class index extends Component {
             comparebox: a
         })
     }
+    // remove all players from comparison array
     removeAllComparison(){
         this.setState({
             comparebox: []
@@ -78,6 +85,7 @@ export default class index extends Component {
     <div>
     <Card>
         <Card.Body style={{padding: '20px'}}>
+        {/* Form to add players for comparison */}
         <Form onSubmit={this.addToCompare}>
             <Form.Group as={Row}>
                 <Col md={8} xs={12}>
@@ -96,6 +104,7 @@ export default class index extends Component {
                 </Col>
             </Form.Group>
             <hr></hr>
+            {/* Comparison List */}
             <div>
                 <Row>
                 {this.state.comparebox.map((data, index)=>{
@@ -114,35 +123,36 @@ export default class index extends Component {
                             </Button>
                         </span>
                         </Button>
-                        </Col>)
+                    </Col>)
                 })}
                 </Row>
             </div>
         </Form>
         </Card.Body>
     </Card>
-
-    
+    {/* Rendering Components */}
     <Row style={{marginTop: "50px"}}>
+        {/* Rendering Fifties Components */}
         <Col md={4} id="Fifties">
             <Fifties comparedata={this.state.comparebox}></Fifties>
         </Col>
+        {/* Rendering Centuries Components */}
         <Col md={4}>
             <Centuries comparedata={this.state.comparebox}></Centuries>
         </Col>
+        {/* Rendering Zeroes Components */}
         <Col md={4}>
             <Zeroes comparedata={this.state.comparebox}></Zeroes>
         </Col>
     </Row>
-
+    {/* Rendering BatAvg Components */}
     <Row style={{marginTop: "50px"}}>
         <Col xs={12}><BatAvg comparedata={this.state.comparebox}></BatAvg></Col>
     </Row>
-
+    {/* Rendering TotalRuns Components */}
     <Row style={{marginTop: "50px"}}>
         <Col xs={12}><TotalRuns comparedata={this.state.comparebox}></TotalRuns></Col>
     </Row>
-    
     </div>
     )}
 }

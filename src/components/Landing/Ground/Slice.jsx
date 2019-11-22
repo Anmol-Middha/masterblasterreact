@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import * as d3 from 'd3';
 
 export default class Slice extends React.Component {
@@ -22,7 +22,8 @@ export default class Slice extends React.Component {
         onMouseOut={(e)=>{
           this.props.onMouseOutCallback({});
           e.target.style.opacity = 1;
-        }}></path>
+        }}>
+        </path>
         {/* label for each arc */}
         <text transform={`translate(${arc.centroid(value)})`}
               dy=".35em"

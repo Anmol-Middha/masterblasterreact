@@ -13,7 +13,8 @@ export default class index extends Component {
             err: {err: {}, message: ""}
         }
         this.fetchdata = this.fetchdata.bind(this);
-    }
+	}
+	// Executes when page renders
     componentDidMount(){
         this.fetchdata();
 	}
@@ -32,11 +33,7 @@ export default class index extends Component {
                 err: {err, message: "data loading error"}
             })
         })
-	}
-	componentDidUpdate(){
-		console.log(this.state.teamdata);
-	}
-	
+	}	
 	//rendering component
 	render() {
 	// modifying the data in the heirarichal format for treemap	

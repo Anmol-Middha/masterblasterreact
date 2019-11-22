@@ -23,7 +23,6 @@ export default class index extends Component {
     }
     // fetching data from server
     fetchdata(){
-        var arr = [];
         axios.get('https://masterblaster.herokuapp.com/sachin/ground')
         .then(rslt=>{
             this.setState({
@@ -74,7 +73,8 @@ export default class index extends Component {
                     padAngle={.02}
                     onMouseOverCallback2={datum => this.setState({hoveredSlice: {"ground":datum["ground"], "x": x, "y": y}})}
                     onMouseOutCallback2={datum => {this.setState({hoveredSlice: null})}}/>
-                </svg>   
+                </svg>
+                {/* ToolTip Component */}
                 {
                     this.state.hoveredSlice ?
                     <Tooltip

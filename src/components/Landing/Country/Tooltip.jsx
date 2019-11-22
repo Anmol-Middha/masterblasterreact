@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 export default class Tooltip extends Component {
-    constructor(){
-        super();
-    }
     // rendering tooptip component
     render() {
         const { xScale, yScale } = this.props.scales;

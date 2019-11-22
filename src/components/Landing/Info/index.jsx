@@ -23,12 +23,14 @@ export default class index extends Component {
             'Content-Type': 'application/json'
         }})
         .then(rslt=>{
+            //updating state
             this.setState({
                 infodata: rslt.data,
                 err: {},
             })
         })
         .catch(err =>{
+            // updating state
             this.setState({
                 yeardata: {},
                 err: {error: err, message: "data loading error"}
@@ -40,7 +42,7 @@ export default class index extends Component {
             <Card style={{marginBottom: '50px'}}>
             <Card.Body>
             <Row>
-                
+
             {/* Sachin portfolio */}
             <Col xs={12} md={3} className="sachin-image">
                 <div>
@@ -67,8 +69,8 @@ export default class index extends Component {
                         </Col>
                     </Row>
                 </Nav>
+                
                 <Tab.Content>
-
                     {/* batting tab content */}
                     <Tab.Pane eventKey="bat">
                         <Row style={{marginTop: '40px', marginBottom: '40px'}}>
@@ -104,7 +106,6 @@ export default class index extends Component {
                             </Col>
                         </Row>
                     </Tab.Pane>
-
                     {/* bowling tab content */}
                     <Tab.Pane eventKey="wicket">
                     <Row style={{marginTop: '40px', marginBottom: '40px'}}>

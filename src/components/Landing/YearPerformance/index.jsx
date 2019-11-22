@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import {Image, Col, Row, Card, Nav, Tab, Table} from 'react-bootstrap';
+import {Card, Table} from 'react-bootstrap';
 
 import '../../../css/year.css'
 
@@ -13,6 +13,7 @@ export default class index extends Component {
         };
         this.fetchData = this.fetchData.bind(this);
     }
+    // Execute when page renders
     componentDidMount(){
         this.fetchData();
     }
@@ -22,12 +23,14 @@ export default class index extends Component {
             'Content-Type': 'application/json'
         }})
         .then(rslt=>{
+            // updating state
             this.setState({
                 yeardata: rslt.data.yeardata,
                 err: {},
             })
         })
         .catch(err =>{
+            // updating state
             this.setState({
                 yeardata: {},
                 err: {error: err, message: "data loading error"}

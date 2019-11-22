@@ -28,11 +28,9 @@ export default class index extends Component {
             playersdata: this.props.comparedata
         })
     }
-    
     componentWillUpdate(){
         this.fetchdata(this.props.comparedata);
     }
-
     fetchdata(players){
         axios.post('https://masterblaster.herokuapp.com/comparison/batavg', {players})
         .then(rslt=>{

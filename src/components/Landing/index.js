@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Container, Row, Jumbotron} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 
 import Info from './Info';
 import YearPerformance from './YearPerformance';
@@ -12,8 +12,8 @@ export default class index extends Component {
         return (
             // Rendering all components in container
             <Container style={{maxWidth: "1380px"}}>
-                <Info style={{marginTop: '20px', marginBottom: '20px'}}/>
-                <YearPerformance style={{marginTop: '20px', marginBottom: '20px'}}/>
+                <Info style={{marginTop: '100px', marginBottom: '20px'}}/>  
+                <YearPerformance style={{marginBottom: '20px'}}/>
                 <Country style={{marginBottom: '20px'}}/>
                 <Team style={{marginBottom: '20px'}}/>
                 <Ground style={{marginBottom: '20px'}} />

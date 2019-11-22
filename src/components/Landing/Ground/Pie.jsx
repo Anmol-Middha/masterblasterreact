@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as d3 from 'd3';
 import Slice from './Slice.jsx';
 
@@ -6,7 +6,6 @@ export default class Pie extends React.Component {
     constructor(props) {
       super(props);
       this.colorScale = d3.scaleOrdinal(d3.schemeCategory10); //color palette for chart
-      // this.renderSlice = this.renderSlice.bind(this);
     }
   
     render() {

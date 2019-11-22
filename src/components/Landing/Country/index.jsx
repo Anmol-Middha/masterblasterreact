@@ -15,28 +15,27 @@ export default class index extends Component {
             err:{err:{}, message: ""},
         }
         this.fetchdata = this.fetchdata.bind(this);
-        this.xScale = scaleBand()
-        this.yScale = scaleLinear()
-        this.renderTooltip = this.renderTooltip.bind(this);
+        this.xScale = scaleBand();
+        this.yScale = scaleLinear();
     }
-    renderTooltip(props){
-        console.log(this.state.hoveredBar);
-        return <Tooltip {...props}>{"hello"}</Tooltip>
-    }
+    // executes when page renders
     componentDidMount(){
         this.fetchdata();
     }
+    // fetching data from server
     fetchdata(){
         axios.get('https://masterblaster.herokuapp.com/sachin/country', {headers:{
             'Content-Type': 'application/json'
         }})
         .then(rslt=>{
+            // updating state
             this.setState({
                 countrydata: rslt.data,
                 err: {err:{}, messsage:""}
             })
         })
         .catch(err=>{
+            //updating state
             this.setState({
                 countrydata: [],
                 err: {err:{}, message:"data loading error"}
@@ -46,6 +45,7 @@ export default class index extends Component {
     render() {
         const margins = { top: 50, right: 20, bottom: 100, left: 60 };
         const svgDimensions = { width: 1282, height: 500 };
+        // max range of data
         let maxValue = 0;
         this.state.countrydata.map(d => {
             for(let key in d){

@@ -11,9 +11,12 @@ export default class index extends Component {
     render() {
         return (
             <Router>
+                {/* Rendering Navigation Component*/}
                 <Navigation/>
                 <br />
+                {/* Rendering Landing Component */}
                 <Route exact path={ROUTES.LANDING} component={LandingPage} />
+                {/* Rendering Comparison Component */}
                 <Route exact path={ROUTES.COMPARISON} component={ComparisonPage} />
             </Router>
         )
