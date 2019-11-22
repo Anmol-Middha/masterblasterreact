@@ -23,7 +23,7 @@ export default class Bars extends Component {
     const { xScale, yScale } = scales
     const { height } = svgDimensions
 
-    // create bars for each data element
+    // create strike rate bars for each data element
     const barsa = (
       data.map(datum =>{
             return <rect
@@ -44,6 +44,7 @@ export default class Bars extends Component {
             />
       },)
     )
+    // create bat_avg bars for each data element
     const barsb=(
         data.map(datum=>{
             return <rect
